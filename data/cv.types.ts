@@ -40,6 +40,7 @@ type CVDataBase<TLocale extends Locale> = {
   languageTag: TLocale;
   name: string;
   role: string;
+  careerStartYear?: number;
   summary: string;
   contact: ContactInfo;
   experience: ExperienceItem[];

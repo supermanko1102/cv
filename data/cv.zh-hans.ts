@@ -4,6 +4,7 @@ export const cvZhHans: CVDataZhHans = {
   languageTag: "zh-hans",
   name: "Jamie Chen",
   role: "前端工程师",
+  careerStartYear: 2020,
   summary:
     "专注于打造可维护且可扩展的 SaaS 产品。具备设计系统、前端架构与性能优化经验，能够与产品、设计和后端团队协作，交付以用户为中心的功能。",
   contact: {

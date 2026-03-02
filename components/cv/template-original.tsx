@@ -16,6 +16,14 @@ export function ResumeOriginalTemplate({
   skillsTitle,
 }: ResumeOriginalTemplateProps) {
   const isHans = cv.languageTag === "zh-hans";
+  const currentYear = new Date().getFullYear();
+  const yearsOfExperience =
+    typeof cv.careerStartYear === "number" &&
+    cv.careerStartYear >= 1900 &&
+    cv.careerStartYear <= currentYear
+      ? currentYear - cv.careerStartYear
+      : null;
+  const experienceLabel = isHans ? "年经验" : "年經驗";
   const toReadableUrl = (url: string) =>
     url.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/$/, "");
   const toPrintableLinkLabel = (url: string) => {
@@ -61,7 +69,10 @@ export function ResumeOriginalTemplate({
       <article className={`resume resume-cjk ${bodyFontClass}`}>
         <header className="resume-header">
           <h1 className="resume-name">{cv.name}</h1>
-          <p className="resume-role">{cv.role}</p>
+          <p className="resume-role">
+            {cv.role}
+            {yearsOfExperience !== null ? ` · ${yearsOfExperience}+ ${experienceLabel}` : null}
+          </p>
           <p className="resume-location">{contactLine}</p>
           {contactLinks.length ? (
             <ul className="resume-contact-list">

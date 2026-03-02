@@ -5,6 +5,13 @@ type CVTemplateEnProps = {
 };
 
 export function CVTemplateEn({ cv }: CVTemplateEnProps) {
+  const currentYear = new Date().getFullYear();
+  const yearsOfExperience =
+    typeof cv.careerStartYear === "number" &&
+    cv.careerStartYear >= 1900 &&
+    cv.careerStartYear <= currentYear
+      ? currentYear - cv.careerStartYear
+      : null;
   const toReadableUrl = (url: string) =>
     url.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/$/, "");
   const toPrintableLinkLabel = (url: string) => {
@@ -30,7 +37,10 @@ export function CVTemplateEn({ cv }: CVTemplateEnProps) {
       <article className="classic-resume font-resume-serif">
         <header className="classic-header">
           <h1 className="classic-name">{cv.name}</h1>
-          <p className="classic-role">{cv.role}</p>
+          <p className="classic-role">
+            {cv.role}
+            {yearsOfExperience !== null ? ` • ${yearsOfExperience}+ years` : null}
+          </p>
           <p className="classic-contact">{contactLine}</p>
           {contactLinks.length ? (
             <p className="classic-contact">

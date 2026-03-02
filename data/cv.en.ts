@@ -4,6 +4,7 @@ export const cvEn: CVDataEn = {
   languageTag: "en",
   name: "Jamie Chen",
   role: "Frontend Engineer",
+  careerStartYear: 2020,
   summary:
     "Frontend engineer focused on building maintainable SaaS products. Experienced in design systems, frontend architecture, and performance optimization. Comfortable collaborating across product, design, and backend teams to deliver user-centered features.",
   contact: {
