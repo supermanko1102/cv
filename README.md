@@ -1,4 +1,4 @@
-# sample-cv
+# cv
 多語系履歷網站（繁中 / 简中 / English）
 ```bash
 pnpm install
