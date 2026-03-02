@@ -7,6 +7,14 @@ type CVTemplateEnProps = {
 export function CVTemplateEn({ cv }: CVTemplateEnProps) {
   const toReadableUrl = (url: string) =>
     url.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/$/, "");
+  const toPrintableLinkLabel = (url: string) => {
+    const readable = toReadableUrl(url);
+    if (readable.length <= 64) {
+      return readable;
+    }
+
+    return `${readable.slice(0, 61)}...`;
+  };
 
   const contactLine = [
     cv.contact.location,
@@ -15,7 +23,7 @@ export function CVTemplateEn({ cv }: CVTemplateEnProps) {
   ].join(" • ");
 
   return (
-    <main className="classic-page">
+    <main className="classic-page" lang={cv.languageTag}>
       <article className="classic-resume font-resume-serif">
         <header className="classic-header">
           <h1 className="classic-name">{cv.name}</h1>
@@ -98,7 +106,7 @@ export function CVTemplateEn({ cv }: CVTemplateEnProps) {
               <p>{project.summary}</p>
               {project.link ? (
                 <a className="classic-link classic-project-link" href={project.link}>
-                  {project.link}
+                  {toPrintableLinkLabel(project.link)}
                 </a>
               ) : null}
             </article>

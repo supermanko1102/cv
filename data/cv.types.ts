@@ -43,8 +43,6 @@ export type CVData = {
     linkedin: string;
   };
   labels: {
-    language: string;
-    contact: string;
     experience: string;
     education: string;
     projects: string;

@@ -18,6 +18,14 @@ export function ResumeOriginalTemplate({
   const isHans = cv.languageTag === "zh-hans";
   const toReadableUrl = (url: string) =>
     url.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/$/, "");
+  const toPrintableLinkLabel = (url: string) => {
+    const readable = toReadableUrl(url);
+    if (readable.length <= 64) {
+      return readable;
+    }
+
+    return `${readable.slice(0, 61)}...`;
+  };
 
   const contactLine = [cv.contact.location, cv.contact.phone, cv.contact.email].join(" · ");
   const contactLinks = [
@@ -37,11 +45,11 @@ export function ResumeOriginalTemplate({
 
   const openInNewTab = (href: string) => /^https?:\/\//i.test(href);
   const companyProjectsTitle = isHans ? "公司项目" : "公司項目";
-  const sideProjectsTitle = cv.labels.sideProjects ?? "Side Project";
+  const sideProjectsTitle = cv.labels.sideProjects ?? (isHans ? "个人项目" : "個人專案");
   const sideProjects = cv.sideProjects ?? [];
 
   return (
-    <main className="resume-page">
+    <main className="resume-page" lang={cv.languageTag}>
       <article className={`resume resume-cjk ${bodyFontClass}`}>
         <header className="resume-header">
           <h1 className="resume-name">{cv.name}</h1>
@@ -129,7 +137,7 @@ export function ResumeOriginalTemplate({
                         rel="noreferrer"
                         target="_blank"
                       >
-                        {project.link}
+                        {toPrintableLinkLabel(project.link)}
                       </a>
                     ) : null}
                   </article>
@@ -159,7 +167,7 @@ export function ResumeOriginalTemplate({
                         rel="noreferrer"
                         target="_blank"
                       >
-                        {project.link}
+                        {toPrintableLinkLabel(project.link)}
                       </a>
                     ) : null}
                   </article>

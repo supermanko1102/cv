@@ -15,7 +15,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(cvEn.contact.website),
   title: {
-    default: `${cvEn.name} - ${cvEn.role}`,
+    default: cvEn.name,
     template: `%s | ${cvEn.name}`,
   },
   description: cvEn.summary,
@@ -38,14 +38,6 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: cvEn.contact.website,
-    siteName: `${cvEn.name}'s CV`,
-    title: `${cvEn.name} - ${cvEn.role}`,
-    description: cvEn.summary,
-  },
   robots: {
     index: true,
     follow: true,
@@ -55,19 +47,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
-    },
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${cvEn.name} - ${cvEn.role}`,
-    description: cvEn.summary,
-  },
-  alternates: {
-    canonical: cvEn.contact.website,
-    languages: {
-      en: "/en",
-      "zh-Hant": "/zh-hant",
-      "zh-Hans": "/zh-hans",
     },
   },
 };
@@ -88,7 +67,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html className={inter.className} lang="en">
+    <html className={inter.className} lang="und">
       <body className={inter.variable}>
         <LocaleNav />
         <ErrorBoundary>{children}</ErrorBoundary>

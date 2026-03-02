@@ -525,8 +525,21 @@ a {
     size: A4;
   }
 
+  html,
   body {
-    background: #fff;
+    width: 100%;
+    background: #fff !important;
+    color: #111 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  body > header {
+    display: none !important;
   }
 
   a,
@@ -570,10 +583,19 @@ a {
   .classic-section-title {
     margin-bottom: 0.28rem;
     font-size: 14pt;
+    break-after: avoid-page;
+    page-break-after: avoid;
   }
 
   .classic-entry + .classic-entry {
     margin-top: 0.58rem;
+  }
+
+  .classic-entry,
+  .classic-list,
+  .classic-entry-head {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
   }
 
   .classic-entry-title {
@@ -597,13 +619,13 @@ a {
     max-width: none;
     padding: 0;
     box-shadow: none;
-    font-size: 10.5pt;
-    line-height: 1.45;
+    font-size: 10.2pt;
+    line-height: 1.5;
   }
 
   .resume-section {
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
+    margin-top: 0.46rem;
+    padding-top: 0.46rem;
   }
 
   .resume-name {
@@ -624,14 +646,18 @@ a {
   }
 
   .resume-section-title {
-    font-size: 13.5pt;
+    font-size: 13.2pt;
     padding-bottom: 0.12rem;
+    break-after: avoid-page;
+    page-break-after: avoid;
   }
 
   .resume-subsection-title {
-    font-size: 10.5pt;
-    margin-top: 0.36rem;
-    margin-bottom: 0.2rem;
+    font-size: 10.2pt;
+    margin-top: 0.32rem;
+    margin-bottom: 0.18rem;
+    break-after: avoid-page;
+    page-break-after: avoid;
   }
 
   .resume-entry-title {
@@ -647,8 +673,40 @@ a {
   .resume-bullets li {
     margin-top: 0.02rem;
   }
+
+  .resume-skill-line,
+  .resume-entry-meta,
+  .resume-paragraph,
+  .resume-bullets li {
+    line-height: 1.46;
+  }
+
+  .resume-project-link {
+    font-size: 9.2pt;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  .resume-entry,
+  .resume-entry-heading,
+  .resume-bullets {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
 }
 
 .print-force-new-page {
+  break-before: page;
   page-break-before: always;
+}
+
+.print-avoid-break {
+  break-inside: avoid-page;
+  page-break-inside: avoid;
 }

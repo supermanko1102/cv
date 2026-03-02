@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sample-cv
 
-## Getting Started
+多語系履歷網站（繁中 / 简中 / English），使用 Next.js App Router 建置，支援靜態輸出與列印樣式。
 
-First, run the development server:
+## Tech Stack
+
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS 4
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+開啟 [http://localhost:3000](http://localhost:3000)。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/` -> 重新導向到 `/zh-hant`
+- `/zh-hant` -> 繁體中文履歷
+- `/zh-hans` -> 简体中文履歷
+- `/en` -> English resume
 
-## Learn More
+## Build & Quality Check
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+app/
+  page.tsx                # 首頁導向
+  [locale]/page.tsx       # 多語系頁面與 metadata
+components/
+  cv/                     # 履歷模板（EN / 中文）
+  layout/locale-nav.tsx   # 語系切換導覽
+data/
+  cv.en.ts
+  cv.zh-hant.ts
+  cv.zh-hans.ts
+  cv.loader.ts            # 語系資料載入與驗證
+  cv.types.ts             # 型別定義
+```
 
-## Deploy on Vercel
+## How To Update CV Content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 基本資料、經歷、專案、技能：修改 `data/cv.*.ts`
+- 語系標題（例如工作經歷、技能）：修改各語系的 `labels`
+- 版型與排版：修改 `components/cv/*` 與 `app/globals.css`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+- 頁面包含 print CSS，可直接列印成 A4 履歷。
+- 各語系頁面會輸出對應的 SEO metadata（title / description / OG / canonical）。
