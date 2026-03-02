@@ -5,7 +5,6 @@ export type ExperienceItem = {
   company: string;
   period: string;
   location: string;
-  tech?: string[];
   highlights: string[];
 };
 
@@ -38,9 +37,9 @@ export type CVData = {
     email: string;
     phone: string;
     location: string;
-    website: string;
-    github: string;
-    linkedin: string;
+    website?: string;
+    github?: string;
+    linkedin?: string;
   };
   labels: {
     experience: string;
@@ -48,7 +47,6 @@ export type CVData = {
     projects: string;
     sideProjects?: string;
     skills: string;
-    techStack: string;
   };
   experience: ExperienceItem[];
   education: EducationItem[];

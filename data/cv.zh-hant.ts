@@ -21,7 +21,6 @@ export const cvZhHant: CVData = {
     projects: "專案",
     sideProjects: "個人專案",
     skills: "技能",
-    techStack: "技術堆疊",
   },
   experience: [
     {
@@ -29,7 +28,6 @@ export const cvZhHant: CVData = {
       company: "Northstar Labs",
       period: "2022 - 至今",
       location: "遠端",
-      tech: ["React", "Next.js", "TypeScript", "GraphQL"],
       highlights: [
         "主導前端元件系統重整，降低重複程式碼並縮短新成員上手時間。",
         "建立跨站台可重用的設計 token 與主題規範，提升介面一致性。",
@@ -42,7 +40,6 @@ export const cvZhHant: CVData = {
       company: "BrightCart",
       period: "2020 - 2022",
       location: "美國，奧斯汀",
-      tech: ["Vue", "TypeScript", "Node.js", "REST API"],
       highlights: [
         "開發電商平台結帳與帳號管理功能，支援中小型客戶日常營運。",
         "建置轉換率與留存分析儀表板，提供產品決策所需的可視化資料。",

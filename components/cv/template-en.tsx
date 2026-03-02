@@ -21,6 +21,11 @@ export function CVTemplateEn({ cv }: CVTemplateEnProps) {
     cv.contact.phone,
     cv.contact.email,
   ].join(" • ");
+  const contactLinks = [
+    cv.contact.website,
+    cv.contact.github,
+    cv.contact.linkedin,
+  ].filter((link): link is string => Boolean(link));
 
   return (
     <main className="classic-page" lang={cv.languageTag}>
@@ -29,24 +34,18 @@ export function CVTemplateEn({ cv }: CVTemplateEnProps) {
           <h1 className="classic-name">{cv.name}</h1>
           <p className="classic-role">{cv.role}</p>
           <p className="classic-contact">{contactLine}</p>
-          <p className="classic-contact">
-            <a className="classic-link" href={cv.contact.website} rel="noreferrer" target="_blank">
-              {toReadableUrl(cv.contact.website)}
-            </a>{" "}
-            •{" "}
-            <a className="classic-link" href={cv.contact.github} rel="noreferrer" target="_blank">
-              {toReadableUrl(cv.contact.github)}
-            </a>{" "}
-            •{" "}
-            <a
-              className="classic-link"
-              href={cv.contact.linkedin}
-              rel="noreferrer"
-              target="_blank"
-            >
-              {toReadableUrl(cv.contact.linkedin)}
-            </a>
-          </p>
+          {contactLinks.length ? (
+            <p className="classic-contact">
+              {contactLinks.map((link, index) => (
+                <span key={link}>
+                  {index > 0 ? " • " : null}
+                  <a className="classic-link" href={link} rel="noreferrer" target="_blank">
+                    {toReadableUrl(link)}
+                  </a>
+                </span>
+              ))}
+            </p>
+          ) : null}
         </header>
 
         <section className="classic-section">

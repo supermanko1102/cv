@@ -11,7 +11,6 @@ export const cvEn: CVData = {
     email: "hello@example.com",
     phone: "+1 (555) 010-1234",
     location: "San Francisco, CA, USA",
-    website: "https://example.dev",
     github: "https://github.com/example",
     linkedin: "https://www.linkedin.com/in/example/",
   },
@@ -21,7 +20,6 @@ export const cvEn: CVData = {
     projects: "Projects",
     sideProjects: "Side Projects",
     skills: "Skills",
-    techStack: "Tech stack",
   },
   experience: [
     {
@@ -29,7 +27,6 @@ export const cvEn: CVData = {
       company: "Northstar Labs",
       period: "2022 - Present",
       location: "Remote",
-      tech: ["React", "Next.js", "TypeScript", "GraphQL"],
       highlights: [
         "Led migration from a legacy UI layer to a reusable component system, reducing duplicated code and onboarding time.",
         "Implemented a shared token and theming strategy across web surfaces to improve visual consistency.",
@@ -42,7 +39,6 @@ export const cvEn: CVData = {
       company: "BrightCart",
       period: "2020 - 2022",
       location: "Austin, TX, USA",
-      tech: ["Vue", "TypeScript", "Node.js", "REST API"],
       highlights: [
         "Built checkout and account features for an ecommerce platform used by SMB customers.",
         "Created analytics dashboards for conversion and retention reporting used by product managers.",

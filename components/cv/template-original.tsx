@@ -29,19 +29,25 @@ export function ResumeOriginalTemplate({
 
   const contactLine = [cv.contact.location, cv.contact.phone, cv.contact.email].join(" · ");
   const contactLinks = [
-    {
-      href: cv.contact.website,
-      label: `${isHans ? "个人网站" : "個人網站"}：${toReadableUrl(cv.contact.website)}`,
-    },
-    {
-      href: cv.contact.github,
-      label: `GitHub：${toReadableUrl(cv.contact.github)}`,
-    },
-    {
-      href: cv.contact.linkedin,
-      label: `LinkedIn：${toReadableUrl(cv.contact.linkedin)}`,
-    },
-  ];
+    cv.contact.website
+      ? {
+          href: cv.contact.website,
+          label: `${isHans ? "个人网站" : "個人網站"}：${toReadableUrl(cv.contact.website)}`,
+        }
+      : null,
+    cv.contact.github
+      ? {
+          href: cv.contact.github,
+          label: `GitHub：${toReadableUrl(cv.contact.github)}`,
+        }
+      : null,
+    cv.contact.linkedin
+      ? {
+          href: cv.contact.linkedin,
+          label: `LinkedIn：${toReadableUrl(cv.contact.linkedin)}`,
+        }
+      : null,
+  ].filter((item): item is { href: string; label: string } => Boolean(item));
 
   const openInNewTab = (href: string) => /^https?:\/\//i.test(href);
   const companyProjectsTitle = isHans ? "公司项目" : "公司項目";
@@ -55,20 +61,22 @@ export function ResumeOriginalTemplate({
           <h1 className="resume-name">{cv.name}</h1>
           <p className="resume-role">{cv.role}</p>
           <p className="resume-location">{contactLine}</p>
-          <ul className="resume-contact-list">
-            {contactLinks.map((item) => (
-              <li key={`${item.label}-${item.href}`}>
-                <a
-                  className="resume-link"
-                  href={item.href}
-                  rel={openInNewTab(item.href) ? "noreferrer" : undefined}
-                  target={openInNewTab(item.href) ? "_blank" : undefined}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {contactLinks.length ? (
+            <ul className="resume-contact-list">
+              {contactLinks.map((item) => (
+                <li key={`${item.label}-${item.href}`}>
+                  <a
+                    className="resume-link"
+                    href={item.href}
+                    rel={openInNewTab(item.href) ? "noreferrer" : undefined}
+                    target={openInNewTab(item.href) ? "_blank" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </header>
 
         <section className="resume-section">
@@ -99,11 +107,6 @@ export function ResumeOriginalTemplate({
                   <p className="resume-entry-period">{item.period}</p>
                 </div>
                 <p className="resume-entry-meta">{item.location}</p>
-                {item.tech?.length ? (
-                  <p className="resume-entry-meta">
-                    {cv.labels.techStack}: {item.tech.join(" · ")}
-                  </p>
-                ) : null}
                 <ol className="resume-bullets resume-bullets-numbered">
                   {item.highlights.map((point) => (
                     <li key={point}>{point}</li>
@@ -127,9 +130,7 @@ export function ResumeOriginalTemplate({
                       <p className="resume-entry-period">{project.tech.join(" · ")}</p>
                     </div>
                     <p className="resume-paragraph">{project.summary}</p>
-                    <p className="resume-entry-meta">
-                      {cv.labels.techStack}: {project.tech.join(" · ")}
-                    </p>
+                   
                     {project.link ? (
                       <a
                         className="resume-link resume-project-link"
@@ -157,9 +158,6 @@ export function ResumeOriginalTemplate({
                       <p className="resume-entry-period">{project.tech.join(" · ")}</p>
                     </div>
                     <p className="resume-paragraph">{project.summary}</p>
-                    <p className="resume-entry-meta">
-                      {cv.labels.techStack}: {project.tech.join(" · ")}
-                    </p>
                     {project.link ? (
                       <a
                         className="resume-link resume-project-link"

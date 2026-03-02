@@ -13,7 +13,6 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(cvEn.contact.website),
   title: {
     default: cvEn.name,
     template: `%s | ${cvEn.name}`,
