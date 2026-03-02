@@ -1,61 +1,18 @@
 # sample-cv
-
-多語系履歷網站（繁中 / 简中 / English），使用 Next.js App Router 建置，支援靜態輸出與列印樣式。
-
-## Tech Stack
-
-- Next.js 16 (App Router)
-- React 19 + TypeScript
-- Tailwind CSS 4
-
-## Local Development
-
+多語系履歷網站（繁中 / 简中 / English）
 ```bash
 pnpm install
 pnpm dev
 ```
+執行後依終端機提示開啟網址
+改內容：`data/cv.en.ts`、`data/cv.zh-hant.ts`、`data/cv.zh-hans.ts`
+路由：`/zh-hant`、`/zh-hans`、`/en`（`/` 會轉到 `/zh-hant`）
+建置：`pnpm lint && pnpm build && pnpm start`
 
-開啟 [http://localhost:3000](http://localhost:3000)。
-
-## Available Routes
-
-- `/` -> 重新導向到 `/zh-hant`
-- `/zh-hant` -> 繁體中文履歷
-- `/zh-hans` -> 简体中文履歷
-- `/en` -> English resume
-
-## Build & Quality Check
-
-```bash
-pnpm lint
-pnpm build
-pnpm start
-```
-
-## Project Structure
-
-```text
-app/
-  page.tsx                # 首頁導向
-  [locale]/page.tsx       # 多語系頁面與 metadata
-components/
-  cv/                     # 履歷模板（EN / 中文）
-  layout/locale-nav.tsx   # 語系切換導覽
-data/
-  cv.en.ts
-  cv.zh-hant.ts
-  cv.zh-hans.ts
-  cv.loader.ts            # 語系資料載入與驗證
-  cv.types.ts             # 型別定義
-```
-
-## How To Update CV Content
-
-- 基本資料、經歷、專案、技能：修改 `data/cv.*.ts`
-- 語系標題（例如工作經歷、技能）：修改各語系的 `labels`
-- 版型與排版：修改 `components/cv/*` 與 `app/globals.css`
-
-## Notes
-
-- 頁面包含 print CSS，可直接列印成 A4 履歷。
-- 各語系頁面會輸出對應的 SEO metadata（title / description / OG / canonical）。
+## PDF 匯出建議
+- 用瀏覽器列印（`Cmd/Ctrl + P`）另存 PDF
+- 建議優先使用 Chrome 匯出，結果通常最穩定
+- 紙張選 `A4`、邊界選「預設」或「最小」
+- 背景圖形建議開啟，版面會更接近畫面
+- 若發生分頁跑版，先把瀏覽器縮放設為 `100%`
+- 不同瀏覽器的字型與分頁演算法略有差異，輸出前可先預覽一次
