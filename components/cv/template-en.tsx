@@ -1,7 +1,7 @@
-import { CVData } from "@/data/cv.types";
+import { CVDataEn } from "@/data/cv.types";
 
 type CVTemplateEnProps = {
-  cv: CVData;
+  cv: CVDataEn;
 };
 
 export function CVTemplateEn({ cv }: CVTemplateEnProps) {
@@ -16,11 +16,9 @@ export function CVTemplateEn({ cv }: CVTemplateEnProps) {
     return `${readable.slice(0, 61)}...`;
   };
 
-  const contactLine = [
-    cv.contact.location,
-    cv.contact.phone,
-    cv.contact.email,
-  ].join(" • ");
+  const contactLine = [cv.contact.location, cv.contact.phone, cv.contact.email]
+    .filter((item): item is string => Boolean(item))
+    .join(" • ");
   const contactLinks = [
     cv.contact.website,
     cv.contact.github,
@@ -59,7 +57,7 @@ export function CVTemplateEn({ cv }: CVTemplateEnProps) {
                 </div>
                 <p className="classic-entry-meta">{item.period}</p>
               </div>
-              {item.details.length ? (
+              {item.details?.length ? (
                 <ul className="classic-list">
                   {item.details.map((detail) => (
                     <li key={detail}>{detail}</li>

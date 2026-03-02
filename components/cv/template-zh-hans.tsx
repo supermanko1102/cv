@@ -1,8 +1,8 @@
 import { ResumeOriginalTemplate } from "@/components/cv/template-original";
-import { CVData } from "@/data/cv.types";
+import { CVDataZhHans } from "@/data/cv.types";
 
 type CVTemplateZhHansProps = {
-  cv: CVData;
+  cv: CVDataZhHans;
 };
 
 export function CVTemplateZhHans({ cv }: CVTemplateZhHansProps) {

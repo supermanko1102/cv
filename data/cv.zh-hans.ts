@@ -1,8 +1,7 @@
-import { CVData } from "@/data/cv.types";
+import { CVDataZhHans } from "@/data/cv.types";
 
-export const cvZhHans: CVData = {
+export const cvZhHans: CVDataZhHans = {
   languageTag: "zh-hans",
-  languageName: "简体中文",
   name: "Jamie Chen",
   role: "前端工程师",
   summary:
@@ -18,7 +17,6 @@ export const cvZhHans: CVData = {
   labels: {
     experience: "工作经历",
     education: "学历",
-    projects: "项目",
     sideProjects: "个人项目",
     skills: "技能",
   },
@@ -53,7 +51,6 @@ export const cvZhHans: CVData = {
       school: "State University",
       degree: "计算机科学学士",
       period: "2016 - 2020",
-      details: [],
     },
   ],
   projects: [
@@ -76,7 +73,6 @@ export const cvZhHans: CVData = {
       summary:
         "轻量个人规划工具，提供日历视图、提醒机制和键盘优先交互。",
       tech: ["React", "TypeScript", "Supabase"],
-      link: "https://github.com/example/taskflow",
     },
     {
       name: "UI Patterns Playground",

@@ -76,15 +76,13 @@ export default async function LocaleCVPage({ params }: LocalePageProps) {
     notFound();
   }
 
-  const cv = getCVData(locale);
-
   if (locale === "en") {
-    return <CVTemplateEn cv={cv} />;
+    return <CVTemplateEn cv={getCVData("en")} />;
   }
 
   if (locale === "zh-hant") {
-    return <CVTemplateZhHant cv={cv} />;
+    return <CVTemplateZhHant cv={getCVData("zh-hant")} />;
   }
 
-  return <CVTemplateZhHans cv={cv} />;
+  return <CVTemplateZhHans cv={getCVData("zh-hans")} />;
 }

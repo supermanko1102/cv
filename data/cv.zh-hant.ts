@@ -1,8 +1,7 @@
-import { CVData } from "@/data/cv.types";
+import { CVDataZhHant } from "@/data/cv.types";
 
-export const cvZhHant: CVData = {
+export const cvZhHant: CVDataZhHant = {
   languageTag: "zh-hant",
-  languageName: "繁體中文",
   name: "Jamie Chen",
   role: "前端工程師",
   summary:
@@ -18,7 +17,6 @@ export const cvZhHant: CVData = {
   labels: {
     experience: "工作經歷",
     education: "學歷",
-    projects: "專案",
     sideProjects: "個人專案",
     skills: "技能",
   },
@@ -53,7 +51,6 @@ export const cvZhHant: CVData = {
       school: "State University",
       degree: "資訊工程學士",
       period: "2016 - 2020",
-      details: [],
     },
   ],
   projects: [

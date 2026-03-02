@@ -1,9 +1,9 @@
-import { CVData } from "@/data/cv.types";
+import { CVDataZh } from "@/data/cv.types";
 
 type ResumeOriginalTemplateProps = {
   aboutTitle: string;
   bodyFontClass: string;
-  cv: CVData;
+  cv: CVDataZh;
   projectsTitle: string;
   skillsTitle: string;
 };
@@ -27,7 +27,9 @@ export function ResumeOriginalTemplate({
     return `${readable.slice(0, 61)}...`;
   };
 
-  const contactLine = [cv.contact.location, cv.contact.phone, cv.contact.email].join(" · ");
+  const contactLine = [cv.contact.location, cv.contact.phone, cv.contact.email]
+    .filter((item): item is string => Boolean(item))
+    .join(" · ");
   const contactLinks = [
     cv.contact.website
       ? {
@@ -185,7 +187,7 @@ export function ResumeOriginalTemplate({
                   <p className="resume-entry-role">{item.degree}</p>
                   <p className="resume-entry-period">{item.period}</p>
                 </div>
-                {item.details.length ? (
+                {item.details?.length ? (
                   <p className="resume-entry-meta">{item.details.join("、")}</p>
                 ) : null}
               </article>

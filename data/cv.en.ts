@@ -1,8 +1,7 @@
-import { CVData } from "@/data/cv.types";
+import { CVDataEn } from "@/data/cv.types";
 
-export const cvEn: CVData = {
+export const cvEn: CVDataEn = {
   languageTag: "en",
-  languageName: "English",
   name: "Jamie Chen",
   role: "Frontend Engineer",
   summary:
@@ -18,7 +17,6 @@ export const cvEn: CVData = {
     experience: "Experience",
     education: "Education",
     projects: "Projects",
-    sideProjects: "Side Projects",
     skills: "Skills",
   },
   experience: [
@@ -52,7 +50,6 @@ export const cvEn: CVData = {
       school: "State University",
       degree: "B.S. in Computer Science",
       period: "2016 - 2020",
-      details: [],
     },
   ],
   projects: [
@@ -67,22 +64,6 @@ export const cvEn: CVData = {
       summary:
         "Built an internal dashboard for monitoring incidents, deployment status, and system KPIs across teams.",
       tech: ["React", "TypeScript", "Node.js", "Chart.js"],
-    },
-  ],
-  sideProjects: [
-    {
-      name: "TaskFlow",
-      summary:
-        "A lightweight personal planning app with calendar views, reminders, and keyboard-first interactions.",
-      tech: ["React", "TypeScript", "Supabase"],
-      link: "https://github.com/example/taskflow",
-    },
-    {
-      name: "UI Patterns Playground",
-      summary:
-        "A collection of reusable UI patterns and accessibility examples for rapid prototyping and team sharing.",
-      tech: ["Next.js", "Tailwind CSS", "Storybook"],
-      link: "https://github.com/example/ui-patterns-playground",
     },
   ],
   skills: [
