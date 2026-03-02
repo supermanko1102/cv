@@ -11,8 +11,8 @@
 ## Local Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 開啟 [http://localhost:3000](http://localhost:3000)。
@@ -27,9 +27,9 @@ npm run dev
 ## Build & Quality Check
 
 ```bash
-npm run lint
-npm run build
-npm run start
+pnpm lint
+pnpm build
+pnpm start
 ```
 
 ## Project Structure
