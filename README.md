@@ -59,3 +59,5 @@ data/
 
 - 頁面包含 print CSS，可直接列印成 A4 履歷。
 - 各語系頁面會輸出對應的 SEO metadata（title / description / OG / canonical）。
+
+hello from Howard.
